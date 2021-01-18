@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+
+<div>
+  {% if not member%}
+  <h2>The member you are looking for does not exist</h2>
+  {% else %}
+  <h1>{{ member.username }}</h1>
+
+  <div>
+    {% if member.profile_image %}
+    <img
+      src="{{ member.profile_image.url }}"
+      alt="{{ member.username }}"
+      style="width: 150px; max-height: 200px"
+    />
+    {% else %}
+    <img
+      src="/static/images/filler_photo.png"
+      alt="{{ member.username }}"
+      style="width: 150px; max-height: 200px"
+    />
+    {% endif %}
+  </div>
+</br>
+
+  <i>Member of NH's 48 since: {{ member.joined_date }}</i>
+  <p>About me: {{member.bio}}</p>
+  {% endif %} 
+</div>
+{% endblock %}
