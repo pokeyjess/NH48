@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'nh48_app',
     'nh48_user',
+    'authentication',
     'django_cleanup.apps.CleanupConfig',
 ]
 
