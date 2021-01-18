@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<div>
+ 
+    <div>
+    {% if post.mountain_image %}
+    <img
+      src="{{ post.mountain_image.url }}"
+      alt="{{ post.mountain }}"
+      style="width: 600px; height: 600px"
+    />
+    {% else %}
+    <img
+      src="/static/images/filler_photo.jpg"
+      alt="{{ post.mountain }}"
+      style="width: 600px; height: 600px"
+    />
+    {% endif %}
+    </div>
+    <div>
+        <h6>Posted by: {{ post.poster }} on {{ post.time_posted }}</h6>
+        <p> {{ post.caption }}</p>
+    </div>
+
+  </div>
+
+
+{% endblock %}
