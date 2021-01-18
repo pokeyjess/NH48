@@ -22,6 +22,11 @@
         <h6>Posted by: {{ post.poster }} on {{ post.time_posted }}</h6>
         <p> {{ post.caption }}</p>
     </div>
+    <div>
+        {% if request.user.id == post.poster.id %}
+    <a href='/post/{{post.id}}/delete/' onclick="return confirm('Are you sure you want to delete this post?')">Delete Post</a>
+    {% endif %}
+    </div>
 
   </div>
 

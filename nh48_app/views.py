@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from nh48_app.models import Post
 from nh48_user.models import NHUser
 from nh48_app.forms import PostForm
@@ -22,3 +22,11 @@ def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     poster_id = post.poster.id
     return render(request, 'post_detail.html', {'post': post})
+
+def delete_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    if request.user.id == post.poster.id:
+        post.delete()
+        return redirect('profile', request.user.username)
+    else: 
+        return HttpResponseForbidden("You do not have permission to delete this post")
