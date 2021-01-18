@@ -1,0 +1,31 @@
+<nav class="navbar navbar-custom">
+      
+      <ul class="nav navbar-nav navbar-center">
+      {% if request.user.is_authenticated%}
+      <li><a id="notify" class="glyphicon glyphicon-backward" href="javascript:history.go(-1)"></a>
+      </li>
+      <li>
+        <a id="nav-link" href="/">Home</a>
+      </li>
+      <li>
+        <a id="nav-link" href="/logout/">Log Out</a>
+      </li>
+      <li>
+        <a id="nav-link" href="/{{request.user.username}}/">Profile</a>
+      </li>
+      <li>
+        <a id="nav-link" href="/newpost/">Post a Pic</a>
+      </li>
+      
+      {% else %}
+      <li>
+        <a id="nav-link" href="/login/">Log In</a>
+      </li>
+      <li>
+        <a id="nav-link" href="/signup/">Create an account</a>
+      </li>
+      </ul>
+      {% endif %}
+</br>
+</nav>
+
